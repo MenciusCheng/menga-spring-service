@@ -53,6 +53,8 @@ public class WebhookController {
     @RequestMapping("/git-push-code-generator")
     public String gitPushCodeGenerator(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         File file = new File("/opt/web/code-generator");
-        return ShellUtil.execCmd("git pull", file);
+        String result = ShellUtil.execCmd("git pull", file);
+        logger.info("gitPushCodeGenerator.result=\n" + result);
+        return result;
     }
 }
